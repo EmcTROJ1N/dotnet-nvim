@@ -1,34 +1,36 @@
 # dotnet-nvim
 
-Neovim-сборка для разработки на **.NET / C#**.
+**[English]** · [Русский](README.ru.md)
 
-## Установка
+Neovim configuration for **.NET / C#** development.
+
+## Installation
 
 ```bash
 git clone https://github.com/EmcTROJ1N/dotnet-nvim ~/.config/nvim
 bash ~/.config/nvim/install.sh
 ```
 
-После установки поставь шрифт терминала **JetBrainsMono Nerd Font**, открой `nvim` — плагины установятся автоматически.
+After installation set your terminal font to **JetBrainsMono Nerd Font**, open `nvim` — plugins install automatically on first launch.
 
-## Требования
+## Requirements
 
 - Neovim ≥ 0.10
 - git, ripgrep, fd, Node.js
-- .NET SDK (для C# / EF Core)
+- .NET SDK (for C# / EF Core)
 
-## Документация
+## Documentation
 
-Подробные гайды в папке [`docs/`](docs/):
+Full guides in [`docs/`](docs/):
 
-- [Установка и зависимости](docs/installation.md)
-- [Файловое дерево](docs/file-explorer.md)
-- [Запуск проектов](docs/run-configurations.md)
-- [EF Core миграции](docs/ef-migrations.md)
-- [Git-интеграция](docs/git.md)
-- [Хоткеи](docs/keybindings.md)
-- [Per-project конфигурация](docs/per-project-config.md)
+- [Installation & dependencies](docs/installation.md)
+- [File explorer](docs/file-explorer.md)
+- [Run configurations](docs/run-configurations.md)
+- [EF Core migrations](docs/ef-migrations.md)
+- [Git integration](docs/git.md)
+- [Keybindings](docs/keybindings.md)
+- [Per-project config](docs/per-project-config.md)
 
-## Лицензия
+## License
 
 MIT
