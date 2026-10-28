@@ -10,6 +10,14 @@ return {
     vim.lsp.config("*", {
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
     })
+    -- OmniSharp crashes on semanticTokens/range requests (ArgumentOutOfRangeException),
+    -- which causes nvim to freeze waiting for a response. Disable semantic tokens for it.
+    vim.lsp.config("omnisharp", {
+      capabilities = vim.tbl_deep_extend("force",
+        require("cmp_nvim_lsp").default_capabilities(),
+        { textDocument = { semanticTokens = vim.NIL } }
+      ),
+    })
     require("mason-lspconfig").setup({
       ensure_installed = { "lua_ls", "ts_ls", "html", "cssls", "omnisharp" },
       automatic_enable = true,
