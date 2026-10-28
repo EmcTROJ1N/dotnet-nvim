@@ -1049,7 +1049,7 @@ require("lazy").setup({
 
 -- :Keys — open keybinding reference
 vim.api.nvim_create_user_command("Keys", function()
-  vim.cmd("edit " .. vim.fn.stdpath("config") .. "/KEYS.md")
+  vim.cmd("edit " .. vim.fn.stdpath("config") .. "/docs/keybindings.md")
 end, { desc = "Open keybinding reference" })
 
 -- Diagnostics: errors in red, warnings in yellow, underline + virtual text
