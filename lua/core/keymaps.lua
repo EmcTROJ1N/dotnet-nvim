@@ -1,5 +1,3 @@
--- Smart close: deletes the buffer instead of closing the window.
--- This way neo-tree stays in place and the editing area is always preserved.
 local function smart_close(force)
   local buf = vim.api.nvim_get_current_buf()
   local ft  = vim.bo[buf].filetype
@@ -86,14 +84,4 @@ end
 vim.keymap.set("n", "<Tab>",   function() cycle_buf(1)  end, { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", function() cycle_buf(-1) end, { desc = "Prev buffer" })
 
--- Close current buffer (Space+x)
-local function close_buf()
-  local buf  = vim.api.nvim_get_current_buf()
-  local bufs = vim.tbl_filter(function(b)
-    return vim.api.nvim_buf_is_valid(b) and vim.bo[b].buflisted and vim.bo[b].buftype == ""
-  end, vim.api.nvim_list_bufs())
-  if #bufs > 1 then vim.cmd("bnext") end
-  pcall(vim.cmd, "bdelete " .. buf)
-end
-
-vim.keymap.set("n", "<leader>x", close_buf, { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>x", function() smart_close(false) end, { desc = "Close buffer" })

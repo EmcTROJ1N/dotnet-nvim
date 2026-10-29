@@ -51,7 +51,7 @@ return {
     })
 
     -- Auto-show neo-tree when opening a real file (e.g. from Alpha dashboard)
-    vim.api.nvim_create_autocmd("BufRead", {
+    vim.api.nvim_create_autocmd("BufWinEnter", {
       callback = function()
         if vim.bo.buftype ~= "" then return end
         local ft = vim.bo.filetype
