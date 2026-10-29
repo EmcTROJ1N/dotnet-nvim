@@ -38,9 +38,12 @@ return {
       { "<leader>rt", function() vim.cmd("Term") end,     desc = "Open terminal" },
       { "<leader>rp", function() vim.cmd("RunSetup") end, desc = "Pick startup project" },
 
-      { "<leader>l",  group = "LSP" },
-      { "<leader>rn", desc = "Rename symbol" },
-      { "<leader>ca", desc = "Code actions" },
+      { "<leader>l",   group = "LSP / Logs" },
+      { "<leader>rn",  desc = "Rename symbol" },
+      { "<leader>ca",  desc = "Code actions" },
+      { "<leader>ll",  function() vim.cmd("Log") end,    desc = "Open debug log" },
+      { "<leader>lL",  function() vim.cmd("LogLsp") end, desc = "Open LSP log" },
+      { "<leader>lc",  function() vim.cmd("LogClear") end, desc = "Clear debug log" },
 
       { "<leader>t",  group = "Tools" },
       { "<leader>te", function() vim.cmd("Errors") end, desc = "Errors panel" },
