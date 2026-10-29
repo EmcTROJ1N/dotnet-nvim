@@ -49,5 +49,23 @@ return {
         if vim.fn.argc() == 0 then vim.cmd("Neotree show") end
       end,
     })
+
+    -- Auto-show neo-tree when opening a real file (e.g. from Alpha dashboard)
+    vim.api.nvim_create_autocmd("BufRead", {
+      callback = function()
+        if vim.bo.buftype ~= "" then return end
+        local ft = vim.bo.filetype
+        if ft == "" or ft == "alpha" or ft == "neo-tree" then return end
+        local has_tree = false
+        for _, w in ipairs(vim.api.nvim_list_wins()) do
+          if vim.bo[vim.api.nvim_win_get_buf(w)].filetype == "neo-tree" then
+            has_tree = true; break
+          end
+        end
+        if not has_tree then
+          vim.schedule(function() pcall(vim.cmd, "Neotree show") end)
+        end
+      end,
+    })
   end,
 }

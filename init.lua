@@ -11,6 +11,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("core.logger")
 require("core.options")
+require("core.keymaps")
 require("lazy").setup("plugins", { ui = { border = "rounded" } })
 require("core.diagnostics")
 require("core.autocmds")
