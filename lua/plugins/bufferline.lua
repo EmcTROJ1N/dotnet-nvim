@@ -1,6 +1,6 @@
 return {
   "akinsho/bufferline.nvim",
-  enabled = false,  -- removed: conflicts with window management (vsplit for Alpha)
+  enabled = true,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("bufferline").setup({
