@@ -35,8 +35,13 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep)
     vim.keymap.set("n", "<leader>fb", builtin.buffers)
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-    vim.keymap.set("n", "<C-t>",      builtin.find_files)
-    vim.keymap.set("i", "<C-t>",      function() builtin.find_files() end)
+    local function find_from_root()
+      local root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+      local cwd = (vim.v.shell_error == 0 and root) or vim.fn.expand("%:p:h")
+      builtin.find_files({ cwd = cwd })
+    end
+    vim.keymap.set("n", "<C-t>", find_from_root)
+    vim.keymap.set("i", "<C-t>", find_from_root)
     vim.keymap.set("n", "<M-f>",      builtin.live_grep)
     vim.keymap.set("i", "<M-f>",      function() builtin.live_grep() end)
     vim.keymap.set("n", "<leader>?",  builtin.keymaps, { desc = "Search keymaps" })
