@@ -21,7 +21,12 @@ vim.api.nvim_create_autocmd("WinClosed", {
           and wft ~= "neo-tree" and wft ~= "alpha"
       end, wins)
       if #real > 0 then return end
-      if ft == "alpha" then vim.cmd("qa") else pcall(vim.cmd, "Alpha") end
+      if ft == "alpha" then
+        vim.cmd("qa")
+      else
+        pcall(vim.cmd, "Neotree close")
+        pcall(vim.cmd, "Alpha")
+      end
     end)
   end,
 })
